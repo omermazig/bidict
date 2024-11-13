@@ -1,10 +1,12 @@
 import pytest
 
+from bidict import TwoWayDictNaive, TwoWayDictReverse
 
-@pytest.fixture()
+
+@pytest.fixture(params=[TwoWayDictNaive, TwoWayDictReverse])
 def two_way_dict(request) -> dict:
-    # Return your object here
-    raise NotImplementedError
+    # Instantiate either TwoWayDictNaive or TwoWayDictReverse based on parameter
+    return request.param()
 
 
 # Tests for both TwoWayDictNaive and TwoWayDictReverse
